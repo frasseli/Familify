@@ -1,0 +1,59 @@
+extends layout
+
+block content
+
+  block content
+    h1= title
+
+    p Events
+    each event in events 
+      if event.type == '1'
+        li= 'Birth of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+      if event.type == '2'
+        li= 'Adoption of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+      if event.type == '3'
+        li= 'Marriage of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+      if event.type == '4'
+        li= 'Death of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+
+    br
+    br
+
+    form(method="post" action="/events")
+
+      fieldset
+
+        table
+          thead
+          
+          tbody
+            tr
+              td: label(for="person") Event for Person:
+              td: select(id="person", name="person")
+                option
+                each person in persons
+                  option(value=person._id) #{person.name.first} #{person.name.last}
+
+            tr
+              td: label(for="type") Type:
+              td: select(id="type", name="type")
+                option
+                each type in types
+                  option(value=type.id) #{type.desc}
+
+            tr
+              td: label(for="date") Date:
+              td: input(type="text", name="date")
+
+            tr
+              td: label(for="location") Location:
+              td: select(id="location", name="location")
+                option
+                each location in locations
+                  option(value=location._id) #{location.county}, #{location.city} - #{location.country}
+
+            tr
+              td &nbsp;
+
+        div.actions
+          input(type="submit", value="Save event")

@@ -1,0 +1,78 @@
+extends layout
+
+block content
+
+  block content
+    h1= title
+
+    p Persons
+    each person in persons
+      li: a(href='/api/v1/person/'+person._id) #{person.name.first}  #{person.name.last}
+
+    br
+    br
+
+    form(method="post" action="/persons")
+
+      fieldset
+
+        table
+          thead
+          
+          tbody
+            tr
+              td: label(for="firstname") First Name:
+              td: input(type="text", name="name_first")
+
+            tr
+              td: label(for="lastname") Last Name:
+              td: input(type="text", name="name_last")
+
+            tr
+              td: label(for="birthdate") Born:
+              td: input(type="text", name="birthdate")
+
+            tr
+              td: label(for="telnum") Tel number:
+              td: input(type="text", name="telnum")
+
+            tr
+              td: label(for="email") E-mail:
+              td: input(type="text", name="email")
+
+            tr
+              td: label(for="addr") Address:
+              td: input(type="text", name="addr")
+
+            tr
+              td: label(for="father") Father:
+              td: select(id="father", name="father")
+                option
+                each person in persons
+                  if person.gender == 1
+                    option(value=person._id) #{person.name.first} #{person.name.last}
+
+            tr
+              td: label(for="mother") Mother:
+              td: select(id="mother", name="mother")
+                option
+                each person in persons
+                  if person.gender == 2
+                    option(value=person._id) #{person.name.first} #{person.name.last}
+
+            tr
+              td: label(for="spouse") Spouse:
+              td: select(id="spouse", name="spouse")
+                option
+                each person in persons
+                  option(value=person._id) #{person.name.first} #{person.name.last}
+
+            tr
+              td: label(for="flag_main_ancestor") This is a main ancestor:
+              td: input(type="checkbox", name="flag_main_ancestor")
+
+            tr
+              td &nbsp;
+
+        div.actions
+          input(type="submit", value="Save person")

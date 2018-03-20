@@ -1,0 +1,1166 @@
+
+
+
+------------------------------------------------------------
+
+
+
+ZRMM_05_500_CLASS_CARATT - Create material and characteristics
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+PREPARATORY
+	How to verify if vehicle has Sales order? - VLCCUORDER
+	SE vehicle has salesorder call CHCO
+	SE NOT call CMOD
+
+	YO04
+	YM30
+
+
+----------------------------------------------------------------------------------
+
+
+
+
+ZRC_VEHICLE_DATA - BAPI_TE_VLCVEHICLE
+
+ZRC_VLCVEHICLE_01 - VLCVEHICLE
+
+
+
+oms_nafta-zrc_bukrs_comm
+oms_nafta-modelyear
+oms_nafta-versione
+oms_nafta-serie
+oms_nafta-allestspec
+oms_nafta-allestmerc
+oms_nafta-allestfab
+oms_nafta-colest
+
+
+MODELLO	ZRMM_SC_MODELLO
+VERSIONE	ZRMM_SC_VERSIONE
+SERIE	ZRMM_SC_SERIE
+CPOS_MARKET	ZRCOM_CPOS_MARKET
+CPOS_COLINT	ZRCOM_CPOS_COLINT
+SPECIAL_SERIE	ZRCPC_SERIE_SPEC
+ZRC_BUKRS_COMM	BUKRS
+ZRC_FAB_ORD	ZRCOM_FAB_ORD
+ALLESTSPEC	ZRMM_SC_ALLESTIMENTO_SPECIALE
+ALLESTMERC	ZRMM_SC_ALLESTMERC
+ALLESTFAB	ZRMM_SC_ALLESTFAB
+PRCTR_S	ZRCOM_PRCTR_S
+ZVIRT_STOCK	ZRCOM_ZVIRT_STOCK
+
+CPOS_MARKET
+CPOS_COLINT
+SPECIAL_SERIE
+ZRC_FAB_ORD
+PRCTR_S
+ZVIRT_STOCK
+
+
+CHEROKEE TRAILHAWK 3.2L PETROL 9A	KLUH7427E-8AL	CL_VELO_ALL			
+CHEROKEE LONGITUDE 3.2L PETROL 9A	KLUM7426J-8AL	CL_VELO_ALL			
+
+VLCBAPICU_CT TYPE  VLCBAPICU_T
+
+
+0000066549
+0000066550
+0000066551
+0000066552
+0000066553
+0000066554
+
+
+ZRCVM_CL_07_485=>GET_FLOWKEY
+
+
+
+IMP_MARCA	TYPE ZRMM_MARC_PROD_SAP
+IMP_MODELLO	TYPE ZRMM_SC_MODELLO
+IMP_VERSIONE	TYPE ZRMM_SC_VERSIONE
+IMP_SERIE	TYPE ZRMM_SC_SERIE
+IMP_ZZBRAND	TYPE ZRFIBRAND
+
+Action Confirmation has been executed for vehicle 0000066607
+
+ZRMM_SC_013
+
+
+
+>>>>>>>>>>>>>>>>> Flusso RICICLO 
+
+
+*--------------------------------------------------------------------*
+GET_PLANTS_FOR_COMPANY
+Get plants from config table ZRMM_SC_013
+
+IV_BUKRS	importing	TYPE	BUKRS
+ET_PLANTS	returning	Type	ZRCVM_CL_07_485=>TY_T_PLANT
+
+
+Revenue Cycle: Plants and Storage Locations by Company
+
+MANDT	MANDT
+BUKRS	BUKRS
+WERKS	WERKS_D
+LGORT	LGORT_D
+
+
+
+
+Proxys
+http://www.fiatauto.com/pac/proxy-trn1.pac
+http://proxy.fg.local/pac/proxy.pac
+
+
+
+
+*--------------------------------------------------------------------*
+
+	NAFTA Production stations
+
+	BX - YM10 - Confirmation
+	C  - YM10/YM20
+
+	OTHER - YM30
+
+	KZ - YM50 OR YM10/YM20/YM50
+
+*--------------------------------------------------------------------*
+
+
+19/04/2017	45,00 €	No	Si	No	-	-	No	No	0	No	No	0,00 €		No	-	0,00 €	No	No		0,00 €	PERSONALE	Torino		45,00 €
+
+Class type 300: CL00-118-34H-1   already created
+Start of class processing: 300 CLB1JH6527H-8AJ
+
+
+
+Porta 19
+Piano 4
+
+
+VLCACTDATA_HEAD_S-MAT_DOC
+VLCACTDATA_HEAD_S-DOC_YEAR
+VLCACTDATA_HEAD_S-BWART
+
+
+*--------------------------------------------------------------------*
+
+Create log in table ZRCCA_07_LOGACT
+
+*--------------------------------------------------------------------*
+
+
+05/06/17 - 10h - 19h - 8h
+06/06/17 - 09h - 18h - 8h
+07/06/17 - 09h - 18h - 8h
+08/06/17 - 11h - 19h - 7h
+09/06/17 - 09h - 18h - 8h
+
+12/06/17 - 10h - 19h - 8h
+13/06/17 - 09h - 18h - 8h
+14/06/17 - 09h - 18h - 8h
+15/06/17 - 09h - 18h - 8h
+16/06/17 - 09h - 18h - 8h
+
+19/06/17 - 09h - 18h - 8h
+20/06/17 - 09h - 18h - 8h
+21/06/17 - 09h - 18h - 8h
+22/06/17 - 09h - 18h - 8h
+23/06/17 - 09h - 18h - 8h
+
+26/06/17 - 09h - 18h - 8h
+27/06/17 - 09h - 18h - 8h
+28/06/17 - 09h - 18h - 8h
+29/06/17 - 09h - 18h - 8h
+30/06/17 - 09h - 18h - 8h
+
+
+
+
+
+ZRCVM_GAP_07_485 				- Programmone
+ZRCVM_GAP_07_485_LOAD 			- Creare materiale e carateristiche
+ZRCVM_GAP_07_485_MISS_DESC 		- Visualizare missing descriptions
+
+Actions
+YM00 - Create vehicle
+YM10 - Vehicle confirmation
+YM20 - Production update
+YM30 - Configuration change
+YM50 - Vehicle assignment
+YM62 - Goods receipt
+YM65 - Reverse goods receipt
+YP00 - Create PO (ZRCOM_PURCH_ORDER_CREATE_RC)
+YO06 - Change sales order configuration
+
+
+
+184700026 00-118-34H-3
+
+18818701DJKJ JKJL7223C-8AJ
+
+
+CPOS_COLING - WTF - ok done
+SPECIAL_SERIE - Include field in VLCACTDATA (ZRCDF_07_SD_HEAD_S_01) - ok done
+
+
+184700027
+18818702DJKJ
+
+18818704DJKJ
+
+
+
+ZRCVM_PLANTS
+ZRMM_SC_013_1
+ZRMM_SC_013_2
+
+
+18818705DJKJ JKJL7223C-8AJ
+
+7000015325 
+
+jcdp44922-ddd
+DJ79P912FH-ddd
+
+
+MRB: 
+F19316C / fiat@1808
+
+TRB:
+F19316C / Fca@0809
+
+PRB:
+PRJREV19 / Edoardo01a
+PRJREV38 / Fca!2712
+
+QRB:
+F19316C / Frs@2510
+
+ZXMO
+ZXM06U36
+
+
+TESTINVBRH4726001
+TESTINVBRH4726002
+TESTINVBRH4726003
+
+YM22
+YM80
+YM81
+YM99
+YM98
+
+
+0000072147
+
+-------------------------------------------------------------------------------
+29/06/2017
+
+VELO Action YGI0
+
+Included the following fields in append structure ZRCDF_07_SD_HEAD_S_01
+
+ZRC_LGMDT	1 Types	ZRCCM_LGMDT
+ZRC_LGMTM	1 Types	ZRCCM_LGMTM
+ZRC_PODDATE	1 Types	ZRC_PODDATE
+
+-------------------------------------------------------------------------------
+ p_pst(17) type c.
+ p_prg(6) type c.
+ p_pto(1) type c.
+
+FIELD-SYMBOLS:  <p_pst> type c length 17,
+                <p_prg> type c length 6,
+                <p_pto> type c length 1.
+
+ASSIGN ('(RPFIWTIT_CU)P_PST') INTO <p_pst>.
+IF <p_pst> IS ASSIGNED.
+  et_h_record-filler1 = <p_pst>.
+ENDIF.
+
+...
+
+
+
+-------------------------------------------------------------------
+
+MARA @ 12:24 - 273.956
+
+MARC @ 12:29 - 128.407 / 16:46 - 128.413
+
+MARA @ 16:44 - 273.962
+
+MARD @ 16:46 - 574.906
+
+184700031
+
+
+
+E	CL	731	Assignment exists and is valid
+S	C1	2	Characteristic C645 already exists
+S	CL	2	Class type 300: CL00-118-34H-3   already created
+I	CL	802	Start of class processing: 300 CL00-118-34H-3
+I	CL	814	Class 300 CL00-118-34H-3 changed
+E	CL	731	Assignment exists and is valid
+S	VELO	66	Action L-Vehicle creation has been executed for vehicle 0000072261
+S	VELO	66	Action L-Confirmation has been executed for vehicle 0000072261
+W	ZRC_VMS_VELO	6	The action YO00 has not executed because vehicle 0000072261 status is not correct.
+W	ZRC_VMS_VELO	6	The action YE00 has not executed because vehicle 0000072261 status is not correct.
+S	VELO	66	Action L-In Production has been executed for vehicle 0000072261
+S	VELO	66	Action L-Assignment has been executed for vehicle 0000072261
+S	06	17	Limited Value Orders created under the number 300000619
+W	ME	887	Error transferring ExtensionIn data for enhancement CI_EKPODB
+W	ME	887	Error transferring ExtensionIn data for enhancement CI_EKKODB
+W	06	261	No message generated for output of purchasing document
+W	ME	40	Can delivery date be met?
+W	06	836	No configuration yet maintained for material 00-118-34H-3
+S	VELO	66	Action C-Create purchase order has been executed for vehicle 0000072261
+E	ZRC_VMS_VELO	7	No data found for select parameters.
+
+
+
+
+S	M3	800	Material 00-118-34H-4 created
+I	CL	732	Assignment does not exist or is not valid on
+S	CL	506	Saving changes to assignments
+S	CL	735	Assignment created
+I	CL	802	Start of class processing: 300 CL00-118-34H-4
+I	CL	813	Class 300 CL00-118-34H-4 created
+I	CL	732	Assignment does not exist or is not valid on
+S	CL	506	Saving changes to assignments
+S	CL	735	Assignment created
+S	VELO	66	Action L-Vehicle creation has been executed for vehicle 0000072262
+S	VELO	66	Action L-Confirmation has been executed for vehicle 0000072262
+W	ZRC_VMS_VELO	6	The action YO00 has not executed because vehicle 0000072262 status is not correct.
+W	ZRC_VMS_VELO	6	The action YE00 has not executed because vehicle 0000072262 status is not correct.
+S	VELO	66	Action L-In Production has been executed for vehicle 0000072262
+S	VELO	66	Action L-Assignment has been executed for vehicle 0000072262
+E	ZRCOM_VMS_01	50	Material master data not uniquely defined for model 118 version 34H serie 3
+E	VELO	319	Action C-Create purchase order was not executed for vehicle 0000072262
+E	ZRC_VMS_VELO	7	No data found for select parameters.
+
+
+
+0000072266 - 0000073277
+
+
+11:48
+
+603395001
+603395002
+603395003
+603395004
+603395005
+603395006
+603395007
+603395008
+603395009
+603395010
+603395011
+603395012
+603395013
+603395014
+603395015
+39269701HDX6
+39269702HDX6
+39269703HDX6
+39269704HDX6
+39269705HJCD
+39269706HJCD
+39269707HJCD
+39269708HJKJ
+39269709HJKJ
+39269710HJKJ
+
+
+ZZBRAND             FI
+ZRC BODY MODEL
+ZRC CPOS
+ZRC CPOS MARKET
+ZRC MODELLO         372
+ZRC VERSIONE        316
+ZRC SERIE           1
+ZRC MARCVEIC        00
+
+Ygd5{1Fb7jUOb{7FN4{Ii0
+Ygd5{1Fb7jUOb{A3oVRIi0
+Ygd5{1Fb7jUOb{BKK3AIi0
+Ygd5{1Fb7jUOb{CiBxIIi0
+Ygd5{1Fb7jUOb{DgrDlIi0
+Ygd5{1Fb7jUOb{EovzcIi0
+Ygd5{1Fb7jUOb{G4PtLIi0
+Ygd5{1Fb7jUOb{HJq6JIi0
+Ygd5{1Fb7jUOb{IZn23Ii0
+Ygd5{1Fb7jUOb{JnCnZIi0
+Ygd5{1Fb7jUOb{L3vnlIi0
+Ygd5{1Fb7jUOb{M0iCOIi0
+Ygd5{1Fb7jUOb{MBZ9BIi0
+Ygd5{1Fb7jUOb{MPb71Ii0
+Ygd5{1Fb7jUOb{Mc2rAIi0
+Ygd5{1Fb7jUOb{MqBCOIi0
+Ygd5{1Fb7jUOb{OCuTJIi0
+Ygd5{1Fb7jUOb{PHAYOIi0
+Ygd5{1Fb7jUOb{RUiY6Ii0
+Ygd5{1Fb7jUOb{SltnVIi0
+Ygd5{1Fb7jUOb{UFhbgIi0
+Ygd5{1Fb7jUOb{WfFREIi0
+Ygd5{1Fb7jUOb{Xu{CuIi0
+Ygd5{1Fb7jUOb{Z7ZH7Ii0
+
+
+9BD372316G6014610
+9BD578942GB084614
+
+0000073370
+0000073361
+
+
+----------------------------------------------------------------------------
+05/07/2017
+
+603395046
+603395047
+603395048
+603395049
+603395050
+603395051
+603395052
+603395053
+603395054
+603395055
+603395056
+603395057
+603395058
+603395059
+603395060
+39269731HDX6
+39269732HDX6
+39269733HDX6
+39269734HDX6
+39269735HJCD
+39269736HJCD
+39269737HJCD
+39269738HJKJ
+39269739HJKJ
+39269740HJKJ
+
+603395061
+39269738HJCD
+
+0000073409
+0000073410
+
+--------------------
+
+603395046
+603395047
+603395048
+603395049
+603395050
+603395051
+603395052
+603395053
+603395054
+603395055
+603395056
+603395057
+603395058
+603395059
+603395060
+39269731HDX6
+39269732HDX6
+39269733HDX6
+39269734HDX6
+39269735HJCD
+39269736HJCD
+39269737HJCD
+39269738HJKJ
+39269739HJKJ
+39269740HJKJ
+39269741HJCD
+
+603395062
+603395063
+603395064
+603395065
+603395066
+603395067
+603395068
+603395069
+603395070
+603395071
+603395072
+603395073
+603395074
+603395075
+603395076
+39269741HDX6
+39269742HDX6
+39269743HDX6
+39269744HDX6
+39269745HJCD
+39269746HJCD
+39269747HJCD
+39269748HJKJ
+39269749HJKJ
+39269750HJKJ
+39269751HJCD
+
+603395046
+603395047
+603395048
+603395049
+603395050
+603395051
+603395052
+603395053
+603395054
+603395055
+603395056
+603395057
+603395058
+603395059
+603395060
+39269731HDX6
+39269732HDX6
+39269733HDX6
+39269734HDX6
+39269735HJCD
+39269736HJCD
+39269737HJCD
+39269738HJKJ
+39269739HJKJ
+39269740HJKJ
+
+603395001
+603395002
+603395003
+603395004
+603395005
+603395006
+603395007
+603395008
+603395009
+603395010
+603395011
+603395012
+603395013
+603395014
+603395015
+39269701HDX6
+39269702HDX6
+39269703HDX6
+39269704HDX6
+39269705HJCD
+39269706HJCD
+39269707HJCD
+39269708HJKJ
+39269709HJKJ
+39269710HJKJ
+73386
+
+73394
+
+
+-------------------------
+
+YM99 - Check if value of rejection reason is empty, if not, then send to recycling with error
+YM98 - Check if value of rejection reason is the same as the constant, if not, then send to recycling with error
+
+
+
+---------------------+---
+
+G235 603395055 00-578-942-0
+
+- 51H + 213
+
+
+Ygd5{1Fb7kUOgrypwPMUCW	0000073386 603395049 00-372-316-1
+
+G235	603395049	OMS_LATAM		00-372-316-1	07.07.2017		2								
+
+
+-----------------------------------------------------------------------
+
+603395062
+603395063
+603395064
+603395065
+603395066
+603395067
+603395068
+603395069
+603395070
+603395071
+603395072
+603395073
+603395074
+603395075
+603395076
+39269741HDX6
+39269742HDX6
+39269743HDX6
+39269744HDX6
+39269745HJCD
+39269746HJCD
+39269747HJCD
+39269748HJKJ
+39269749HJKJ
+39269750HJKJ
+
+
+
+-----------------------
+
+Update the data from 011/011TEMP from VLCVEHICLE and DATA_STAZ_E from LATAM (YM00) - OK
+
+
+Fill the field MARC_PROD_LOG in the action YM00 as does ZZBRAND when creating the material - OK
+
+
+---------------------------------
+
+Call the methods to OCR flow - Ok, to be tested
+
+OPT YM30 - Sorting of DETTOPT in the VLCVehicle ??? - Ok da testare
+
+YM81/YM98 - Action YOB0 is not deleting the AGBRU value from Sales Order - ZRC_ABGRU - Ok to be tested
+
+
+39269742HDX6
+DX6P9829H-8AJ
+
+
+Add CPOS_COLINT in 02_011/TEMP
+
+Update field DOC_MM_DB / ANNO_MM_DB in table 02_011/TEMP  - OK
+
+YM00 does not calculate the MARCVEIC / MARC_PROD_LOG / MARC_PROG_SAP- -OK
+
+Aggiornamento 011/011TEMP - Copia 011TEMP per 011
+OCR Flow
+Correzione YM80 (Stato ZM8X)
+Correzione ZVIRT_STOCK
+Tabella Plan de Ahorro
+
+
+------------------------------------------------------
+
+603395077
+603395078
+603395079
+603395080
+603395081
+603395082
+603395083
+603395084
+603395085
+603395086
+603395087
+603395088
+603395089
+603395090
+603395091
+603395092
+39269752HDX6
+39269753HDX6
+39269754HDX6
+39269755HDX6
+39269756HJCD
+39269757HJCD
+39269758HJCD
+39269759HJKJ
+39269760HJKJ
+39269761HJKJ
+39269762HJKJ
+39269763HJKJ
+39269764HJCD
+
+
+603395073
+603395075
+603395076
+
+
+-----------------------------------------
+
+Delete field DATA_AGG
+
+
+
+ZRCVM_GAP_02_015A - 
+
+LZRCVM_02_011T00
+ZRCVM_GAP_02_001
+ZRCVM_GAP_02_015A
+ZRCVM_GAP_02_055
+ZRCVM_GAP_02_069
+ZRCVM_GAP_02_070FORM
+ZRCVM_GAP_02_070TOP
+ZRCVM_GAP_02_071FORM
+ZRCVM_GAP_02_071TOP
+ZRCVM_GAP_02_072
+ZRCVM_GAP_02_073
+ZRCVM_GAP_02_074_FORMS
+ZRCVM_GAP_02_074_TOP
+ZRCVM_GAP_02_077
+ZRCVM_GAP_07_485
+
+
+YM22 - Change the way it deals with ZVIRT_STOCK (???)
+
+
+75824
+613395102
+
+
+--------------------------------------------------------------
+
+CD VELO Actions:   7000017248 - To be transported
+CD Programmone:    7000015325 - To be transported
+CD Common actions: 7000018476 - IN MRB
+
+
+
+MERCATO
+MARCA
+MODELLO
+FAM_BUDG
+ALL_MERCATO
+VERSIONE
+SERIE
+GUIDA
+STABIL
+COLEST_OCR
+COLINT_OCR
+OPTIONAL
+STRIN_CJD_STAMP
+ORDF_FGA
+OLD_ORDF
+FLAG_FIASA
+CODOPTSCOMP
+TRASCODIFICA_OK
+FLAG_BLOCC_DISP
+FLAG_CLI_FIN
+FLAG_CAR_STAT
+AREA_ERRORI
+DEALER_SOLD_WEBDAC
+DEALER_SHIP_A26
+DATA_CONFERMA
+DATA_PREVISTA_ASSEGNAZIONE
+DATA_EMISSIONE
+DATA_ORDINE_FISSO
+DATA_DOP
+DATA_TRANSITO_B
+DATA_TRANSITO_C
+DATA_TRANSITO_I
+DATA_DIFFUSO
+DATA_USCITA_LINEA
+DATA_ASSEGNAZIONE
+DATA_CURR_STATN
+DATA_PREV_STATN
+DATA_EDITNOTOK_BG
+DATA_EDITOK_BX
+DATA_BUILT_J
+DATA_STORAGE_JS
+DATA_CLR_PRT_EXIT_WK
+DATA_RECVATPORT_WN
+DATA_PREVISTA_SPEDIZIONE
+DATA_USCITA_DOGANA
+DATA_PREVISTO_ARRIVO_NAVE
+DATA_CONFERMA_PRMS
+DATA_FIAT_SHIP
+PESO_KG
+
+
+
+----------------------------------------------------------------
+
+Review YM30 CPOS_COLINT / COLINT in OCR Update
+
+
+
+YM50 - 
+
+
+-----------------------------------------------------------------
+
+03/07/2017 - 8h
+04/07/2017 - 8h
+05/07/2017 - 8h
+06/07/2017 - 8h
+07/07/2017 - 8h
+
+10/07/2017 - 8h
+11/07/2017 - 8h
+12/07/2017 - 8h
+13/07/2017 - 8h
+14/07/2017 - 8h
+
+17/07/2017 - 8h
+18/07/2017 - 8h
+19/07/2017 - 8h
+
+20/07/2017 - 8h
+21/07/2017 - 8h
+
+24/07/2017 - 8h
+25/07/2017 - 8h
+26/07/2017 - 8h
+27/07/2017 - 8h
+28/07/2017 - 8h
+
+31/07/2017 - 8h
+
+--------------------------------
+
+CHange PO Currency - To be tested - CANCELLED
+
+Read the tabel ZRCIV_05_003 for the calculation of the PO value to be updated - Ok to be tested
+
+
+--------------------------------
+
+YM50 - fill the field VLCVEHICLE-ZRC_REG_MY with the logic for Model Year Register - OK
+
+PREP - When the OMS NAFTA Order arrives in state ZA and there is no vehicle already created, skip the creation of that vehicle - OK
+
+----------------------------------
+
+Create lines for M2 items without MATNR and KNTTP and account from 01_003 table enter text as TRANSPORT or INSURANCE - Ok to be tested
+
+Create Flow TO_OBT in case of error in function to send data to OBT (VHD, ODV, INV) - Ok to be tested
+
+After YM30/YO06 check if the vehicle is assigned (YM50) and execute the OBT event VHD again
+
+
+-----------------------------------------------------------------------
+
+Compare and update the field VLCVEHICLE-ZZBRGEW with OMS_LATAM-WEIGTH/GROSS_VHCL_WEI - Ok
+
+
+
+9BD341A41JY482283
+9BD341A41JY482556
+9BD341A41JY482632
+9BD341A41JY482637
+9BD341A41JY482648
+9BD341A41JY482702
+
+
+9BD341A41JY482556
+9BD341A41JY482632
+9BD341A41JY482637
+9BD341A41JY482648
+9BD341A41JY482702
+
+
+Ligar para medica Isabel
+
+Vacina OK
+Visita otorrino Artemisia Gallone
+
+
+-----------------------------------------------------------------------
+
+SHIPPING DATE / ZRC_SHIP_DATE
+SHIPPING SOURCE / ZRC_SHIP_SOURCE
+
+Action C-Good issue creation has been executed for vehicle 0000077467
+
+Action L- OBT Unblock C22 - Customs Clearance has been executed for vehicle 0000128293
+
+
+YP10 = GORE
+MB_CREATE_GOODS_MOVEMENT
+MB_POST_GOODS_MOVEMENT
+
+
+YP1R = GRER
+BAPI_GOODSMVT_CANCEL
+
+
+YP20 / YP2R = STOL
+MB_CREATE_GOODS_MOVEMENT
+MB_POST_GOODS_MOVEMENT
+
+
+PE3K964682
+
+
+498
+
+NSC
+IFAR05353
+
+
+
+
+BUKRS
+FLOWK
+FLWID
+POSEL
+VHCLE
+DATA_ELAB
+TIME_ELAB
+TYPE
+ID
+MSG_NUMBER
+MESSAGE
+LOG_NO
+LOG_MSG_NO
+MESSAGE_V1
+MESSAGE_V2
+MESSAGE_V3
+MESSAGE_V4
+MSG_PARAMETER
+MSG_ROW
+MSG_FIELD
+MSG_SYSTEM
+
+ZRC_ALLESTMERC, ZRC_REG_MY and ZRC_SPECIAL_SERIE
+
+vlcactdata_head_s-zrc_reg_my
+vlcactdata_head_s-special_serie
+
+
+
+------------------------------------------------------
+
+ZRC_REG_MY - correct YM50_EXECUTE to update this field - OK
+
+YM62 periodo “09” di MM chiuso - implement the check_calendar using c_gap_gr_regs before the YM62 - OK
+
+
+The model-version changing is not managed automatically. Please contact AMS team.
+
+
+FRS69301HDX6
+FRS69302HDX6
+FRS69303HDX6
+FRS69304HDX6
+FRS69305HJKJ
+FRS69306HJKJ
+FRS69307HJKJ
+FRS69308HJKJ
+FRS69309HJKJ
+FRS69310HJKJ
+FRS69311HB1T
+FRS69312HB1T
+
+
+ZRCVM_VARIABILITY
+VMS process flow Variability Report 
+
+
+*PAU
+*PQB
+*PSC
+*PSQ
+*PW7
+*PX8
+
+8AP17164LH3145321
+200Ygd5{1Fb7jUdf1viZtAAGm
+
+
+
+
+
+
+
+
+*----------------------------------------------------------------------------------------------------------*
+Smartforms ZRCSD_INVOICE_AR
+
+Message type YA01
+
+
+PE3K967486
+
+ZRCSD_INVOICE_AR_SIGNATURE
+FERNANDO SCATENA
+
+&GS_COMPANY_ADRC-STREET& &GS_COMPANY_ADRC-HOUSE_NUM1&  &GS_COMPANY_ADRC-FLOOR&  
+&GS_COMPANY_ADRC-POST_CODE1& &GS_COMPANY_ADRC-BEZEI& 
+&GS_COMPANY_ADRC-LANDX&
+&GV_TEXT_FISCAL&
+
+
+GS_HD_KOND_FLETE
+
+&GS_IT_KOND_FLETE-VTEXT&
+
+11291
+88
+
+
+Z037
+
+
+
+0000000739
+0000000740
+0000000741
+0000000742
+0000000743
+0000000744
+0000000745
+0000003664
+0000003665
+0000003666
+0000003699
+0000003700
+0000012610
+0000012611
+0000047470
+0000053217
+0000053219
+0000053220
+0000053221
+0000053222
+0000053224
+0000057670
+0000060250
+0000124578
+0000131096
+
+
+DR0K9B0CI4
+
+
+--U20001
+
+PE3K969772 
+
+39356311HB1T
+603108393
+
+
+FRS000002
+FRS000003
+FRS095301
+FRS095302
+FRS095303
+FRS095304
+FRS095305
+FRS095306
+FRS095307
+FRS095308
+FRS095309
+FRS095310
+FRS095311
+
+38161503HB1T
+38161504HB1T
+38161505HB1T
+38161506HB1T
+38161507HB1T
+38161508HB1T
+38161509HB1T
+38161510HB1T
+38161511HB1T
+38161512HB1T
+38161513HB1T
+38161514HB1T
+38161515HB1T
+38161516HB1T
+
+
+PE3K969997
+
+
+603490202
+
+
+    MESSAGE e032(zrc_vms_velo) INTO ls_return-message.
+    PERFORM get_msg_as_bapiret2 CHANGING ls_return.
+    PERFORM set_log_message_v1 USING ls_return.
+
+DR0K9B0EN9
+
+07356	
+
+/tmp/szhncrpa
+
+
+7000021780
+
+
+30	3431	6	00	196	475	0	000	619
+
+
+
+vehicle-global_segment
+
+ocf_docnumber - 122
+
+street 233 / country 241 / region 240
+
+*--------------------------------------------------------------------*
+* INC2813334 - SIEBEL expects the field global_segment as BLANK
+
+
+quando attivo deciso: 90gg
+
+ativo: no
+
+predisposizione: si
+
+ricevuta la mail: si
+
+decoder: no
+
+
+
+----------------------------------------------------------------------
+
+
+7000022088
+
+
+7000022524
+
+
+988226415JKB49950
+988226415JKB59055
+988226415JKB59057
+988226415JKB59064 
+
+
+
+DR0K9B0GIS
+
+
+lr_07_obt_eve->cdrec = c_evt_unblock
+
+
+E	M3	327	Operation not possible (e.g. incorrect material type or plant)
+
+
+JOB_CLOSE
+
+DR0K9B0ETO
+
+RS_VARIANT_EXISTS
+
+DR0K9B0GWT
+
+
+Fino ad oggi ho fatto 6gg e fino a mese devo fare 11gg in più. Fatto 1gg di assenza nel 05/12.
+
+
+-------------------------
+

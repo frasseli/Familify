@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+  block content
+    h1= title
+
+    p Locations
+    each location in locations
+      li: a(href='/api/v1/location/'+location._id) #{location.county} - #{location.city}, #{location.region} - #{location.country}
+
+    br
+    br
+
+    form(method="post" action="/locations")
+
+      fieldset
+
+        table
+          thead
+          
+          tbody
+            tr
+              td: label(for="county") County:
+              td: input(type="text", name="county")
+
+            tr
+              td: label(for="city") City:
+              td: input(type="text", name="city")
+
+            tr
+              td: label(for="region") Region:
+              td: input(type="text", name="region")
+
+            tr
+              td: label(for="country") Country:
+              td: input(type="text", name="country")
+
+            tr
+              td: label(for="coord") Coordinates:
+              td: input(type="text", name="coord")
+
+            tr
+              td &nbsp;
+
+        div.actions
+          input(type="submit", value="Save location")

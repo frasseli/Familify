@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+
+  p: a(href='/persons') Persons
+  each person in persons
+    li= person.name.first + ' ' + person.name.last 
+
+  br
+  p: a(href='/locations') Locations
+
+  each location in locations
+    li= location.county + ' - ' + location.city  + ', ' + location.region + ' - ' + location.country
+
+  br
+  p: a(href='/events') Events
+
+  each event in events 
+    if event.type == '1'
+        li= 'Birth of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+    if event.type == '2'
+        li= 'Adoption of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+    if event.type == '3'
+        li= 'Marriage of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
+    if event.type == '4'
+        li= 'Death of ' + event.person.name.first + ' ' + event.person.name.last  + ' on ' + moment(event.date).format('DD.MM.YYYY') + ' in ' + event.location.county
